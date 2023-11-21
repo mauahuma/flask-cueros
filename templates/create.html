@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <link href="{{ url_for('static', filename='css/custom.css') }}" type="text/css" rel="stylesheet"> 
+    <link href="{{ url_for('static', filename='css/normalize.css') }}" type="text/css" rel="stylesheet"> 
+    <link href="{{ url_for('static', filename= 'css/skeleton.css') }}" type="text/css" rel="stylesheet"> 
+    <script src="{{ url_for('static',filename= 'js/app.js') }}"></script>
+
+    <title>MusicPro</title>
+</head>
+
+<body>
+    
+    <header id="header" class="header">
+        <div class="container">
+            <div class="row">
+                <div class="four columns">
+
+
+                    <img src="{{ url_for('static',filename= 'img/logo1.png') }}" id="logo">
+                    
+                </div>
+                <div class="two columns u-pull-right">
+                    
+                
+                    
+                </div>
+                {% if loggedIn%}
+                <P>Bienvenid@ {{firstName}}</P>
+                <a href="/logout">cerrar sesion</a>
+                {%else%}
+                <a href="/loginForm">iniciar sesion</a>
+                <a href="/signUpForm">Registrarse</a>
+                {%endif%}
+            </div> 
+        </div>
+        </header>
+        <div id="carrito">
+                                        
+            <table id="lista-carrito" class="u-full-width">
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+            </table>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Total</th>
+                        <th>${{decodedb64}}</th>
+                    </tr>
+                </tbody>
+            </table>
+
+            
+            <form action="{{ response.url }}" method="POST">
+                {% if not loggedIn %}  
+                <p>ingrese su correo Electronico  <input type="email" name ="email" required> </p>
+                {% endif %}
+                <input type="hidden" name="token_ws" value="{{ response.token }}">
+                <input type="submit" value="Ejecutar Pago con Webpay">
+                </form>
+                <br>    </div>
+
+
+<a href="/">&laquo; volver a index</a>
+</body>
+<footer>
+    <script>
+        const tagCarrito = document.querySelector('#lista-carrito tbody');
+
+        function limpiarHTML(){
+    //forma lenta
+    //contenedorCarrito.innerHTML = ''; // esto se hace para limpiar el html, ya que al agregar un elemento y luego agregar otro elementos se repite el primer elemento , y dejar el iner '' hace que se limpie
+
+
+    while(tagCarrito.firstChild){
+        tagCarrito.removeChild(tagCarrito.firstChild) 
+        }
+
+
+}
+        function loadCart(){
+            let artCarro = []
+            
+                artCarro= JSON.parse(localStorage.getItem('carrito')) || []
+
+            limpiarHTML()
+            artCarro.forEach(curso => {
+            const{imagen,titulo,precio,cantidad, id} = curso
+            const row = document.createElement('tr');// Inner Html agrega contenido a una etiqueta especifica en html y el id es necesario porque es la forma de llamar el contenido de html a javascript
+
+            row.innerHTML = `
+
+
+                <td>
+                    <img src="${curso.imagen}" width="100">
+                </td>
+
+                <td>
+                        ${curso.titulo}
+                </td>
+
+                <td>
+                        ${curso.precio}
+                </td>
+
+                <td>
+                        ${curso.cantidad}
+                </td>
+
+              
+
+                
+
+
+            `;
+            //agrega el html del carrito en el tbody
+
+            tagCarrito.appendChild(row);
+        
+        })
+    };
+        window.onload=loadCart;
+    </script>
+</footer>
+</html>

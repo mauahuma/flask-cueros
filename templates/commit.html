@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <link href="{{ url_for('static', filename='css/custom.css') }}" type="text/css" rel="stylesheet"> 
+    <link href="{{ url_for('static', filename='css/normalize.css') }}" type="text/css" rel="stylesheet"> 
+    <link href="{{ url_for('static', filename= 'css/skeleton.css') }}" type="text/css" rel="stylesheet"> 
+    <script src="{{ url_for('static',filename= 'js/app.js') }}"></script>
+
+    <title>MusicPro</title>
+</head>
+
+<body>
+    
+    <header id="header" class="header">
+        <div class="container">
+            <div class="row">
+                <div class="four columns">
+
+
+                    <img src="{{ url_for('static',filename= 'img/logo1.png') }}" id="logo">
+                    
+                </div>
+                <div class="two columns u-pull-right">
+                    
+                
+                    
+                </div>
+                {% if loggedIn%}
+                <P>Bienvenid@ {{firstName}}</P>
+                <a href="/logout">cerrar sesion</a>
+                {%else%}
+                <a href="/loginForm">iniciar sesion</a>
+                <a href="/signUpForm">Registrarse</a>
+                {%endif%}
+            </div> 
+        </div>
+        </header>
+
+{% if (response.status =='AUTHORIZED') %}
+<script>
+    localStorage.clear()
+</script>
+<div class="center">
+<div class="alert alert-warning" role="alert">
+    <h3>Muchas gracias por su compra</h3>
+    <h5>Se ha enviado una confirmacion a su correo Electronico</h5>
+</div>
+<div>
+    <h4>Codigo de Transaccion: </h4>
+    <p>{{response.buy_order}}</p>
+</div>
+<a href="/">&laquo; volver al inicio</a>
+
+</div>
+{% else %}
+<div class="alert alert-warning" role="alert">
+    <h3>Algo salio mal</h3>
+    <h4>Por favor intentelo nuevamente</h4>
+    <a href="/">&laquo; volver al inicio</a>
+
+</div>
+{% endif %}
+
+
+</body>
+</html>
