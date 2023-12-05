@@ -51,7 +51,7 @@ ul {
 
 .submenu #carrito{
     display: none;
-}
+    }
 .submenu:hover #carrito{
     display: block;
     position: absolute;
@@ -149,6 +149,7 @@ ul {
     text-align: center;
     border: 1px solid #e1e1e1;
     background: white;
+    
 }
 @media (min-width: 550px) {
     .card {

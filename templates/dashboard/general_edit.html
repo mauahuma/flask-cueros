@@ -1,0 +1,27 @@
+{% extends 'dashboard/layout.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block body %}
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h4 class="card-title">
+                                {% comment %} {% if 'edit' in request.path %}
+                                    Edit
+                                {% else %}
+                                    Create
+                                {% endif %} {% endcomment %}
+                                s</h4>
+                        </div>
+                        <div class="card-body">
+                            {% comment %} {{ render_form(form) }} {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

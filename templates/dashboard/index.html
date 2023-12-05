@@ -1,0 +1,86 @@
+{% extends 'dashboard/layout.html' %}
+
+{% block body %}
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="info-box mb-3">
+                            <span class="info-box-icon bg-success"><i
+                                    class="fa fa-shopping-cart"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Ventas</span>
+                                    <span class="info-box-text"><b>0</b> Hoy
+                                        y <b>3</b>
+                                        en total</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box mb-3">
+                                <span class="info-box-icon bg-warning"><i class="fa fa-users"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">miembros</span>
+                                    <span class="info-box-text"><b>2</b> nuevos en
+                                        <b>3</b>
+                                        cuentas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <ul class="navi-card">
+                                <li class="item">
+                                    <a href="#">
+                                        <span>0 ordenes listas por despachar</span>
+                                        <span class="right">></span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#">
+                                        <span>0 pagos por recibir</span>
+                                        <span class="right">></span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="/dashboard/product">
+                                        <span>{{productCount}} productos a la venta</span>
+                                        <span class="right">></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="card-title">Mejores productos</h6>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="products-list product-list-in-card px-2">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="card-title">Actividad</h6>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="activity product-list-in-card px-2">
+                               
+                                    <li class="item">
+                                        <span class="activity-title">No hay actividad reciente </span>
+                                    </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

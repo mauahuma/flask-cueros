@@ -1,0 +1,40 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'dashboard/_macros.html' as macros %}
+
+{% block body %}
+<p hidden>{{firstName}}</p>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h4 class="card-title">
+Crear producto                            </h4>
+                        </div>
+                        <form class="mb-3" action="/dashboard/product/add_product"  method="POST" enctype="multipart/form-data" onsubmit="">
+                            <p>nombre: <input class="form-control" type="text" name="nombre"></p>
+                        
+                            <P>precio: <input class="form-control" type="text" name="precio"></p>
+                        
+                            <p>descripcion: <input class="form-control" type="text" name="descripcion"></p>
+                        
+                            <p>imagen: <input type="file" class="form-control" name="imagen" required></p>
+                            <p>stock: <input class="form-control" type="text" name="stock"></p>
+                            <p>categoria: <select class="form-select" id="categoria" name="categoria">
+                                <option value="cuero">Cuero</option>
+                                <option value="cuero-texturado">Cuero Texturado</option>
+                                <option value="cuero-brillante">Cuero Brillante</option>
+                                <option value="cuero-liso">Cuero Liso</option>
+                            </select>
+                        
+                            <p><input  class="btn btn-success" type="submit" value="Crear"></p>
+                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

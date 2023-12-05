@@ -1,0 +1,41 @@
+{% extends 'dashboard/layout.html' %}
+{% block body %}
+<a class="btn btn-success" href='/dashboard/users/add_user'> Crear usuario</a>
+<div class="tbl-header">
+    <table class="table">        <thead>
+          <tr>
+            <th>nombre</th>
+            <th>Correo electronico</th>
+            <th>¿Administrador?</th>
+            <th></th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <form method='post'>
+                <td>{{user[4]}} {{user[5]}}</td>
+                <td>{{user[2]}}</td>
+                {% if user[12]==1%}
+                <td>Sí</td>
+                {% else %}
+                <td>No</td>
+                {% endif %}
+                <td>
+                <input type=hidden value="{{ user[0] }}" name='id' />
+                <button type=submit class="btn btn-danger">Eliminar</button> </form>
+                        <!---------<button class="btn btn-primary" href=''>Editar</button> --->
+                    </td>
+           
+            
+            </tr>
+            {%endfor%}
+
+        </tbody>
+      </table>
+    </div>
+      
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'dashboard/layout.html' %}
+{% import 'dashboard/_macros.html' as macros %}
+
+
+
+{% block body %}
+<form class='container' method="POST" onsubmit="return validate()">
+    <p>Correo electronico: <input class="form-control"  type="email" name="email" /></p>
+    <p>
+      Contraseña:
+      <input class="form-control"  type="password" name="password" id="password" required />
+    </p>
+    <p>Nombres: <input class="form-control"  type="text" name="firstName" /></p>
+    <p>Apellidos: <input class="form-control"  type="text" name="lastName" /></p>
+    <p>Direccion: <input class="form-control"  type="text" name="address1" /></p>
+    <p>Referencia: <input class="form-control"  type="text" name="address2" /></p>
+    <p>Codigo postal: <input class="form-control"  type="number" name="zipcode" /></p>
+    <p>Ciudad: <input class="form-control"  type="text" name="city" /></p>
+    <p>Region: <input class="form-control"  type="text" name="state" /></p>
+    <p>Pais: <input class="form-control"  type="text" name="country" /></p>
+    <p>Numero telefonico:   +56<input class="form-control" type="number" name="phone" /></p>
+    <input type='hidden' value=0 name='admin'/>
+    <p>administrador:    <input class="form-check-input" type="checkbox" value=1 id="flexCheckDefault" name='admin2'>
+    </p>
+    <p><input class="btn btn-success"  type="submit" value="Crear Cuenta" /></p>
+  
+  </form>
+
+{% endblock %}
